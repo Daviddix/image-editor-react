@@ -1,0 +1,61 @@
+:root{
+    --bg-color: #1F1C22;
+    --header-color: #4A4451;
+    --search-icon-color: #271E31;
+    --search-bar-bg:#CCC7D1;
+    --text-color: hsl(270, 10%, 79%);
+    --add-icon-bg: #7F33CC;
+    --add-icon-bg-t1: #8033cc44;
+    --add-icon-bg-t2: #8033cc31;
+    
+    
+    --delete-text-color:#FF6161;
+    --delete-text-color-modal: #E77979;
+    --delete-modal-text: #F5F4F6;
+    --cancel-text-modal-color: #B0A8B8;
+    --delete-text-modal-color: #FF6161;
+    --modal-bg:#4A4451;
+    
+    
+    --cancel-bg:#6E6379;
+    --edit-icon-bg: #7F59A6;
+    --delete-icon-bg: #A65959;
+    --download-icon-bg: #597FA6;
+    
+    
+    --filter-active: #C58AFF;
+    --filter-icon-active: #B263FF;
+    --filter-container-bg: #221E26;
+    
+    --desktop-sidebar-bg: #2E2932;
+}
+
+    button{
+        cursor: pointer;
+    }
+
+@font-face {
+        font-family: montserrat;
+        src: url("./assets/fonts/montserrat/Montserrat-Regular.otf");
+}
+    
+*{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+        font-family: montserrat;
+        letter-spacing: -.2px;
+}
+    
+*::selection{
+        background-color: var(--add-icon-bg);
+        color:#fff;
+}
+    
+html{
+        font-size: 62.5%;
+    }
+
+ body{
+        background-color: var(--bg-color);
+}

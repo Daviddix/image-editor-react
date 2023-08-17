@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewBox="0 0 25 25">
+  <defs>
+    <rect id="rect-1" width="25" height="25" x="0" y="0"/>
+    <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="userSpaceOnUse">
+      <rect width="25" height="25" x="0" y="0" fill="black"/>
+      <use fill="white" xlink:href="#rect-1"/>
+    </mask>
+  </defs>
+  <g>
+    <use fill="none" xlink:href="#rect-1"/>
+    <g mask="url(#mask-2)">
+      <ellipse cx="12.5" cy="12.5" fill="none" stroke="rgb(200,200,200)" stroke-dasharray="0 0 0 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" rx="5.208" ry="5.208"/>
+      <path fill="none" stroke="rgb(200,200,200)" stroke-dasharray="0 0 0 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.5 1.04166667V3.125"/>
+      <path fill="none" stroke="rgb(200,200,200)" stroke-dasharray="0 0 0 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.5 21.875v2.08333333"/>
+      <path fill="none" stroke="rgb(200,200,200)" stroke-dasharray="0 0 0 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.39583333 4.39583333L5.875 5.875"/>
+      <path fill="none" stroke="rgb(200,200,200)" stroke-dasharray="0 0 0 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.125 19.125l1.47916667 1.47916667"/>
+      <path fill="none" stroke="rgb(200,200,200)" stroke-dasharray="0 0 0 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1.04166667 12.5h3"/>
+      <path fill="none" stroke="rgb(200,200,200)" stroke-dasharray="0 0 0 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.875 12.5h2"/>
+      <path fill="none" stroke="rgb(200,200,200)" stroke-dasharray="0 0 0 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.39583333 20.60416667L5.875 19.125"/>
+      <path fill="none" stroke="rgb(200,200,200)" stroke-dasharray="0 0 0 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.125 5.875l1.47916667-1.47916667"/>
+    </g>
+  </g>
+</svg>

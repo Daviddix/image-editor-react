@@ -1,0 +1,61 @@
+.gallery-grid .image{
+    width: 100%;
+    height: 25rem;
+    overflow: hidden;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    position: relative;
+}
+
+.image > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.image .image-options-overlay{
+    background-color: rgba(0, 0, 0, 0.486);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: .8rem 1rem .8rem;
+}
+
+.image-options-overlay p{
+    color: white;
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+}
+
+.options-buttons-container button{
+    width: 2.4rem;
+    height: 2.4rem;
+    border: none;
+    margin: 0 1.2rem 0 0;
+    padding: .4rem;
+    border-radius: .8rem;
+    -webkit-border-radius: .8rem;
+    -moz-border-radius: .8rem;
+    -ms-border-radius: .8rem;
+    -o-border-radius: .8rem;
+}
+
+.options-buttons-container .edit{
+    background-color: var(--edit-icon-bg);
+}
+
+.options-buttons-container .delete{
+    background-color: var(--delete-icon-bg);
+}
+
+.options-buttons-container .download{
+    background-color: var(--download-icon-bg);
+}
+
+.options-buttons-container button img{
+    width: 100%;
+}

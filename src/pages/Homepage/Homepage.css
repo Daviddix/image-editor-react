@@ -1,0 +1,167 @@
+.gallery-header{
+    padding:1.5rem;
+    background-color: var(--header-color);
+    position: sticky;
+    top:0%;
+    left:0;
+    width:100%;
+    z-index: 2;
+}
+
+.gallery-header-inner{
+    display: flex;
+    justify-content: space-between;
+    width:90vw;
+    max-width: 130rem;
+    margin: auto;
+}
+
+.gallery-header-inner form{
+    border-radius: 20rem;
+    padding:.6rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--search-bar-bg);
+    max-width: 45rem;
+    -webkit-border-radius: 20rem;
+    -moz-border-radius: 20rem;
+    -ms-border-radius: 20rem;
+    -o-border-radius: 20rem;
+    width:90%;
+    flex: 1;
+    margin: auto;
+}
+
+.gallery-header-inner input{
+    border:none;
+    width:90%;
+    background-color: transparent;
+    padding: 0 1rem;
+    outline: none;
+}
+
+.gallery-header-inner form input::placeholder{
+    color:black;
+    font-size: 1.2rem;
+    font-family: inherit;
+}
+
+.gallery-header-inner form button{
+    background-color: var(--search-icon-color);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:3rem;
+    height:3rem;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    cursor: pointer;
+    border:none;
+}
+
+.gallery-header-inner button img{
+    max-width: 2rem;
+}
+
+.gallery-header-inner .options-container{
+    background-color: transparent;
+    border: none;
+    position: relative;
+    margin: 0 0 0 2rem;
+}
+
+.options{
+    position: absolute;
+    background-color: var(--modal-bg);
+    width: max-content;
+    padding:1rem .8rem;
+    right:0;
+    top:4.5rem;
+    z-index: 3;
+    box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.445);
+    color: var(--delete-text-modal-color);
+    border-radius: .5rem;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
+}
+
+.gallery-main .gallery-main-inner{
+    width: 90vw;
+    max-width: 120rem;
+    margin: auto;
+}
+
+.gallery-main-inner > h1{
+    font-size: 1.5rem;
+    color:var(--text-color);
+    font-weight: 600;
+    margin: 1.3rem 0;
+}
+
+.gallery-main-inner .gallery-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    gap: 2rem 1.4rem;
+}
+
+.gallery-main .add-new-image{
+    width:4rem;
+    height:4rem;
+    border-radius:50%;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    -ms-border-radius:50%;
+    -o-border-radius:50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--add-icon-bg);
+    box-shadow:
+    0 0rem 1rem .4rem rgba(0, 0, 0, 0.226);
+    position: fixed;
+    bottom:4rem;
+    right:5%;
+    cursor: pointer;
+    transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    -moz-transition: all .2s ease-in;
+    -ms-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    border:none;
+}
+
+.gallery-main .add-new-image:hover{
+    box-shadow:
+    0 0rem 0rem .8rem var(--add-icon-bg-t1),
+    0 0rem 0rem 1.5rem var(--add-icon-bg-t2),
+    0 0rem 1rem 1.6rem rgba(0, 0, 0, 0.226);
+    right:calc(5vw + 2rem);
+    transition: all .5s ease-in;
+    -webkit-transition: all .5s ease-in;
+    -moz-transition: all .5s ease-in;
+    -ms-transition: all .5s ease-in;
+    -o-transition: all .5s ease-in;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+}
+
+@media screen and (min-width:700px) {
+    .gallery-main-inner .gallery-grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        gap: 2rem 1.4rem;
+    }
+
+    .gallery-header-inner form{
+    max-width: 50rem;
+    }
+}

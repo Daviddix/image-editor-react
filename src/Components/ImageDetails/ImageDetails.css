@@ -1,0 +1,90 @@
+.gallery-main .image-details-overlay{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.842);
+    backdrop-filter: blur(5px);
+    min-width:100vw;
+    min-height:100vh;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.image-details-overlay .image-details-overlay-inner{
+    width: 90%;
+    margin: auto;
+}
+
+.image-details-overlay-heading{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 50rem;
+    margin: 0rem auto 5rem;
+}
+
+.image-details-overlay-heading p{
+    font-size: 1.6rem;
+    color: var(--text-color);
+    flex:1;
+    text-align: center;
+}
+
+.image-details-overlay-heading > button{
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    aspect-ratio: 1/1;
+    background-color: var(--cancel-bg);
+    border: none;
+    padding: .4rem;
+}
+
+.image-details-overlay-inner > img{
+    display: block;
+    width: 100%;
+    max-width: 60rem;
+    min-height: 25rem;
+    margin: 0 auto 10rem auto;
+    object-fit: cover;
+}
+
+.image-details-overlay-inner .details-button-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    max-width: 25rem;
+    margin: auto;
+}
+
+.details-button-container button{
+    padding: .8rem;
+    border: none;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.details-button-container button img{
+    max-width: 2rem;
+}
+
+.details-button-container .edit{
+    background-color: var(--edit-icon-bg);
+}
+
+.details-button-container .delete{
+    background-color: var(--delete-icon-bg);
+}
+
+.details-button-container .download{
+    background-color: var(--download-icon-bg);
+}

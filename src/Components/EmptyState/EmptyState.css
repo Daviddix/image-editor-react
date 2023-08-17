@@ -1,0 +1,9 @@
+.gallery-main .empty-state{
+    color: var(--text-color);
+    padding-top: 20rem;
+    margin: 0rem auto;
+    width: 90vw;
+    text-align: center;
+    font-size: 1.4rem;
+    display: none;
+}

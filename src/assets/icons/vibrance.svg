@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <rect id="rect-1" width="24" height="24" x="0" y="0"/>
+    <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="userSpaceOnUse">
+      <rect width="24" height="24" x="0" y="0" fill="black"/>
+      <use fill="white" xlink:href="#rect-1"/>
+    </mask>
+    <path id="path-4" fill-rule="evenodd" d="M4 14h16l-3.5 7H8l-4-6.5"/>
+  </defs>
+  <g>
+    <use fill="none" xlink:href="#rect-1"/>
+    <g mask="url(#mask-2)">
+      <path fill="none" stroke="rgb(200,200,200)" stroke-dasharray="0 0 0 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 2.69l5.66 5.66c2.28907124 2.28757131 2.9744785 5.72892527 1.73653783 8.71896416C18.15859717 20.05900305 15.24117515 22.0087079 12.005 22.0087079c-3.23617515 0-6.15359717-1.94970484-7.39153783-4.93974373C3.3755215 14.07892527 4.06092877 10.63757131 6.35 8.35L12 2.69z"/>
+      <g>
+        <use fill="rgb(191,191,191)" xlink:href="#path-4"/>
+        <use fill-opacity="0" stroke="rgb(191,191,191)" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1" xlink:href="#path-4"/>
+      </g>
+    </g>
+  </g>
+</svg>

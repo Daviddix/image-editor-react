@@ -1,0 +1,65 @@
+.delete-image-overlay{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.842);
+    backdrop-filter: blur(5px);
+    width:100vw;
+    height:100vh;
+    z-index:3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.delete-image-modal{
+    background-color: var(--modal-bg);
+    width:90vw;
+    max-width: 35rem;
+    margin: auto;
+    padding:1.5rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+
+.delete-image-modal h1{
+    font-size: 1.4rem;
+    color:var(--delete-text-color-modal);
+    text-align: center;
+    margin:0 0 2rem 0;
+}
+
+.delete-image-modal p{
+    text-align: center;
+    font-size: 1.2rem;
+    color: white;
+    margin:0 0 2rem 0;
+}
+
+.delete-image-modal .delete-modal-buttons{
+    width:100%;
+    max-width: 20rem;
+    margin: auto;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-modal-buttons button{
+    flex:1;
+    padding: .5rem;
+    border:none;
+    background-color: transparent;
+}
+
+.delete-modal-buttons button:first-of-type{
+    color: var(--cancel-text-modal-color);
+    border-right: 1px solid var(--cancel-bg);
+}
+
+.delete-image-modal button:last-of-type{
+    color: var(--delete-text-modal-color);
+}

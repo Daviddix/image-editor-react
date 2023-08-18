@@ -1,0 +1,64 @@
+.rename-modal-overlay{
+    background-color: rgba(0, 0, 0, 0.411);
+    position: fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index:2;
+    display: none;
+}
+
+.rename-modal{
+    background-color: var(--modal-bg);
+    width:90vw;
+    max-width: 30rem;
+    padding: 1.5rem;
+    border-radius: 1.2rem;
+    -webkit-border-radius: 1.2rem;
+    -moz-border-radius: 1.2rem;
+    -ms-border-radius: 1.2rem;
+    -o-border-radius: 1.2rem;
+}
+
+.rename-modal h1{
+    color: var(--text-color);
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 0 0 1rem 0;
+}
+
+.rename-modal input{
+    width: 100%;
+    background-color: #ebe3f3b0;
+    border: 1px solid rgba(0, 0, 0, 0.418);
+    margin: 0 0 1rem 0;
+    padding: .8rem;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+.rename-modal .button-container{
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rename-modal .button-container button{
+    flex:1;
+    padding: .5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.rename-modal .button-container .accept-name-change{
+    color: var(--text-color);
+}

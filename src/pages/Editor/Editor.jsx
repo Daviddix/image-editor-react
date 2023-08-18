@@ -5,13 +5,16 @@ import downloadIcon from "../../assets/icons/Group-1.svg"
 import backArrow from "../../assets/icons/back-button.svg"
 import presetIcon from "../../assets/icons/preset.svg"
 import filterIcon from "../../assets/icons/filters.svg"
-import saturationIcon from "../../assets/icons/saturation.svg"
 
 
-import trial from "../../../../My Pictures/d.jpg"
+
+import trial from "../../../../My Pictures/web2.png"
 
 
 import "./Editor.css"
+import SinglePreset from "../../Components/SinglePreset/SinglePreset"
+import SingleFilter from "../../Components/SingleFilter/SingleFilter"
+import EditNameModal from "../../Components/EditNameModal/EditNameModal"
 
 function Editor() {
   return (
@@ -63,86 +66,11 @@ function Editor() {
 
       <div className="right-side">
         <div className="filters-container">
-          <button className="filter-container">
-            <img src={saturationIcon} alt="" />
-            <p>Saturation</p>
-          </button>
-
-          <button className="filter-container">
-            <img src={saturationIcon} alt="" />
-            <p>Saturation</p>
-          </button>
-
-          <button className="filter-container">
-            <img src={saturationIcon} alt="" />
-            <p>Saturation</p>
-          </button>
-
-          <button className="filter-container">
-            <img src={saturationIcon} alt="" />
-            <p>Saturation</p>
-          </button>
-
-          <button className="filter-container">
-            <img src={saturationIcon} alt="" />
-            <p>Saturation</p>
-          </button>
-
-          <button className="filter-container">
-            <img src={saturationIcon} alt="" />
-            <p>Saturation</p>
-          </button>
-
-          <button className="filter-container">
-            <img src={saturationIcon} alt="" />
-            <p>Saturation</p>
-          </button>
-
-          <button className="filter-container">
-            <img src={saturationIcon} alt="" />
-            <p>Saturation</p>
-          </button>
+          <SingleFilter />
         </div>
         <div className="presets-container">
-          <button className="preset-container">
-            <img src={trial} alt="" />
-            <p>Original</p>
-          </button>
 
-          <button className="preset-container">
-            <img src={trial} alt="" />
-            <p>Original</p>
-          </button>
-
-          <button className="preset-container">
-            <img src={trial} alt="" />
-            <p>Original</p>
-          </button>
-
-          <button className="preset-container">
-            <img src={trial} alt="" />
-            <p>Original</p>
-          </button>
-
-          <button className="preset-container">
-            <img src={trial} alt="" />
-            <p>Original</p>
-          </button>
-
-          <button className="preset-container">
-            <img src={trial} alt="" />
-            <p>Original</p>
-          </button>
-
-          <button className="preset-container">
-            <img src={trial} alt="" />
-            <p>Original</p>
-          </button>
-
-          <button className="preset-container">
-            <img src={trial} alt="" />
-            <p>Original</p>
-          </button>
+          <SinglePreset />
         </div>
 
         <div className="switcher">
@@ -154,6 +82,10 @@ function Editor() {
             <img src={filterIcon} alt="image filters" />
           </button>
         </div>
+
+        <EditNameModal />
+
+        
       </div>
     </main>
   )

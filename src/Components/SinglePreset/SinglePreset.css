@@ -1,0 +1,36 @@
+.presets-container .preset-container{
+    width:5rem;
+    text-overflow: clip;
+    background-color: transparent;
+    border: none;
+    margin: 0 2rem 0 0;
+    flex-shrink: 0;
+}
+
+.preset-container img{
+    width:100%;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+
+.preset-container p{
+    color: var(--text-color);
+    font-size: 1.1rem;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: .5rem 0 0;
+}
+
+@media screen and (min-width:1000px) {
+    .presets-container .preset-container{
+        width: 6rem;
+       margin: 0;
+    }
+}

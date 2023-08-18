@@ -41,6 +41,12 @@ function Homepage() {
         <SingleImage />
         <SingleImage />
         <SingleImage />
+        <SingleImage />
+        <SingleImage />
+        <SingleImage />
+        <SingleImage />
+        <SingleImage />
+        <SingleImage />
         </div>
         </div>
 

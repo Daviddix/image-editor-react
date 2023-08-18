@@ -4,7 +4,7 @@ main.editor-main{
 }
 
 .left-side .top-controls{
-    width: 90%;
+    width: 90vw;
     margin:auto;
     display: flex;
     align-items: center;
@@ -132,6 +132,10 @@ img[alt="image you're editing"]{
         background-color: var(--desktop-sidebar-bg);
         position: relative;
     }
+
+    img[alt="image you're editing"]{
+        max-width: 70rem;
+    }
     
     .right-side .presets-container,
     .right-side .filters-container
@@ -159,5 +163,9 @@ img[alt="image you're editing"]{
         -ms-transform: translateX(-50%);
         -o-transform: translateX(-50%);
 }
+
+    .left-side .top-controls{
+        width:90%;
+    }
 
 }

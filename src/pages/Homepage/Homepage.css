@@ -95,6 +95,7 @@
     width: 90vw;
     max-width: 120rem;
     margin: auto;
+    padding: 0 0 3rem 0;
 }
 
 .gallery-main-inner > h1{
@@ -126,7 +127,7 @@
     0 0rem 1rem .4rem rgba(0, 0, 0, 0.226);
     position: fixed;
     bottom:4rem;
-    right:5%;
+    right:calc(5vw + 2rem);
     cursor: pointer;
     transition: all .2s ease-in;
     -webkit-transition: all .2s ease-in;
@@ -134,24 +135,6 @@
     -ms-transition: all .2s ease-in;
     -o-transition: all .2s ease-in;
     border:none;
-}
-
-.gallery-main .add-new-image:hover{
-    box-shadow:
-    0 0rem 0rem .8rem var(--add-icon-bg-t1),
-    0 0rem 0rem 1.5rem var(--add-icon-bg-t2),
-    0 0rem 1rem 1.6rem rgba(0, 0, 0, 0.226);
-    right:calc(5vw + 2rem);
-    transition: all .5s ease-in;
-    -webkit-transition: all .5s ease-in;
-    -moz-transition: all .5s ease-in;
-    -ms-transition: all .5s ease-in;
-    -o-transition: all .5s ease-in;
-    transform: rotate(90deg);
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
 }
 
 @media screen and (min-width:700px) {
@@ -164,4 +147,22 @@
     .gallery-header-inner form{
     max-width: 50rem;
     }
+}
+
+/* hover and animation styles*/
+.gallery-main .add-new-image:hover{
+    box-shadow:
+    0 0rem 0rem .8rem var(--add-icon-bg-t1),
+    0 0rem 0rem 1.5rem var(--add-icon-bg-t2),
+    0 0rem 1rem 1.6rem rgba(0, 0, 0, 0.226);
+    transition: all .5s ease-in;
+    -webkit-transition: all .5s ease-in;
+    -moz-transition: all .5s ease-in;
+    -ms-transition: all .5s ease-in;
+    -o-transition: all .5s ease-in;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
 }

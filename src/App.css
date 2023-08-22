@@ -4,7 +4,7 @@
     --search-icon-color: #271E31;
     --search-bar-bg:#CCC7D1;
     --text-color: hsl(270, 10%, 79%);
-    --add-icon-bg: #7F33CC;
+    --add-icon-bg: #7f33cc;
     --add-icon-bg-t1: #8033cc44;
     --add-icon-bg-t2: #8033cc31;
     
@@ -50,6 +50,11 @@
 *::selection{
         background-color: var(--add-icon-bg);
         color:#fff;
+}
+
+*:focus{
+        outline: 2px solid hsla(273, 31%, 50%, 0.678);
+        outline-offset: .2rem;
 }
     
 html{

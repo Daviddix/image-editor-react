@@ -1,6 +1,14 @@
 import "./DeleteModal.css"
 
-function DeleteModal() {
+function DeleteModal({setEditedImages, setShowDeleteAllModal}) {
+  function handleDelete(){
+    setEditedImages([])
+    setShowDeleteAllModal(false)
+  }
+
+  function handleCancel(){
+    setShowDeleteAllModal(false)
+  }
   return (
     <div className="delete-image-overlay">
     <div className="delete-image-modal">
@@ -9,8 +17,13 @@ function DeleteModal() {
         <p>Are you sure you want to delete all your edited images? This action cannot be reversed</p>
 
         <div className="delete-modal-buttons">
-            <button>Cancel</button>
-            <button>Delete</button>
+            <button
+            onClick={handleCancel}
+            >Cancel</button>
+
+            <button
+            onClick={handleDelete}
+            >Delete</button>
         </div>
     </div>
 </div>

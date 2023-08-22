@@ -1,6 +1,6 @@
 .gallery-grid .image{
     width: 100%;
-    height: 25rem;
+    height: 26rem;
     overflow: hidden;
     border-radius: 1rem;
     -webkit-border-radius: 1rem;
@@ -15,11 +15,11 @@
     height: 100%;
     object-fit: cover;
     cursor: pointer;
-    transition: 2s ease-in-out;
-    -webkit-transition: 2s ease-in-out;
-    -moz-transition: 2s ease-in-out;
-    -ms-transition: 2s ease-in-out;
-    -o-transition: 2s ease-in-out;
+    transition: 2s ease-in;
+    -webkit-transition: 2s ease-in;
+    -moz-transition: 2s ease-in;
+    -ms-transition: 2s ease-in;
+    -o-transition: 2s ease-in;
 }
 
 .image .image-options-overlay{
@@ -118,7 +118,6 @@
     }
 }
 
-
 .options-buttons-container .delete:hover{
     transition: .2s ease ;
     box-shadow: 0 0 1rem #a65959a6;
@@ -186,8 +185,8 @@
 }
 
 .options-buttons-container .download:hover img{
-    animation: download .9s alternate;
-    -webkit-animation: download .9s alternate;
+    animation: download .9s forwards;
+    -webkit-animation: download .9s forwards;
 }
 
 @keyframes download {

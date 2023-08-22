@@ -1,0 +1,23 @@
+.gallery-main .not-found-text{
+    color: var(--text-color);
+    padding-top: 10rem;
+    margin: 0rem auto;
+    width: 90vw;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.not-found-container button{
+    margin:2rem auto;
+    display:block;
+    padding:.8rem;
+    background-color: var(--add-icon-bg);
+    color:white;
+    font-weight: 500;
+    border: 2px solid rgba(192, 192, 192, 0.589);
+    border-radius: .4rem;
+    -webkit-border-radius: .4rem;
+    -moz-border-radius: .4rem;
+    -ms-border-radius: .4rem;
+    -o-border-radius: .4rem;
+}

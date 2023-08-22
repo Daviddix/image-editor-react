@@ -112,8 +112,8 @@
 }
 
 .gallery-main .add-new-image{
-    width:4rem;
-    height:4rem;
+    width:5rem;
+    height:5rem;
     border-radius:50%;
     -webkit-border-radius:50%;
     -moz-border-radius:50%;
@@ -140,7 +140,7 @@
 @media screen and (min-width:700px) {
     .gallery-main-inner .gallery-grid{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
         gap: 2rem 1.4rem;
     }
 

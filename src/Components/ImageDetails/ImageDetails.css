@@ -9,7 +9,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    display: none;
 }
 
 .image-details-overlay .image-details-overlay-inner{
@@ -49,8 +48,9 @@
     width: 100%;
     max-width: 60rem;
     min-height: 25rem;
-    margin: 0 auto 10rem auto;
-    object-fit: cover;
+    max-height: 70vh;
+    margin: 0 auto 5rem auto;
+    object-fit: contain;
 }
 
 .image-details-overlay-inner .details-button-container{

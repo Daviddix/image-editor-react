@@ -2,30 +2,74 @@ import "./SingleImage.css"
 import downloadIcon from "../../assets/icons/download.svg"
 import deleteIcon from "../../assets/icons/trash-2.svg"
 import editIcon from "../../assets/icons/edit-2.svg"
+import { useRef } from "react"
+import { useNavigate } from "react-router-dom"
 
-import trial from "../../../../My Pictures/r.jpg"
+function SingleImage({src, name, preset, filters,setIsDownloading, editedImages, setEditedImages, id, setShowImageDetails}) {
+    const linkRef = useRef(null)
+    const navigate = useNavigate()
 
-function SingleImage() {
+
+    function handleDownload(tagRef){
+        tagRef.current.click()
+        setIsDownloading(true)
+        setTimeout(() => {
+            setIsDownloading(false)
+        }, 2000);
+    }
+
+    function handleDelete(imageId){
+        const newEditedImages = editedImages.filter((image)=> image.id !== imageId)
+        setEditedImages(newEditedImages)
+    }
+
+    function handleImageClick(){
+        localStorage.setItem("image-clicked", JSON.stringify({name: name, src: src, id: id}))
+        setShowImageDetails(true)
+    }
+
+    function handleEditButtonClicked(){
+        localStorage.setItem("image-clicked", JSON.stringify({name: name, src: src, id: id}))
+        navigate("/editor")
+    }
+
+
   return (
     <div className="image">
-                <img src={trial} alt="" />
+                <img 
+                onClick={()=>handleImageClick()}
+                src={src} 
+                alt={name} />
 
                 <div className="image-options-overlay">
-                    <p>My image name</p>
+                    <p>{name}</p>
                     <div className="options-buttons-container">
-                        <button className="edit">
+                        <button 
+                        onClick={()=> handleEditButtonClicked()}
+                        className="edit">
                             <img src={editIcon} alt="edit this image" />
                         </button>
 
-                        <button className="delete">
+                        <button 
+                        onClick={()=> handleDelete(id)}
+                        className="delete">
                             <img src={deleteIcon} alt="delete this image" />
                         </button>
 
-                        <button className="download">
+                        <button 
+                        onClick={()=> handleDownload(linkRef)}
+                        className="download">
                             <img src={downloadIcon} alt="download this image" />
                         </button>
                     </div>
                 </div>
+
+            <a 
+            ref={linkRef}
+            href={src}
+            download={name} 
+            style={{display: "none"}}></a>
+
             </div>
   )
 }

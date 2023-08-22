@@ -52,10 +52,10 @@
         color:#fff;
 }
 
-*:focus{
+/* *:focus{
         outline: 2px solid hsla(273, 31%, 50%, 0.678);
         outline-offset: .2rem;
-}
+} */
     
 html{
         font-size: 62.5%;

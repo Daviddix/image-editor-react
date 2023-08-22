@@ -7,6 +7,10 @@
     flex-shrink: 0;
 }
 
+.preset-container.active img{
+    border: 2px solid purple;
+}
+
 .preset-container img{
     width:100%;
     height: 5rem;

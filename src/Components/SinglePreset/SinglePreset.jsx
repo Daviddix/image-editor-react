@@ -1,11 +1,15 @@
 import "./SinglePreset.css"
-import trial from "../../../../My Pictures/web2.png"
 
-function SinglePreset() {
+function SinglePreset({name, src, setPresetToApply, presetToApply}) {
+  function handleClick(){
+    setPresetToApply(name)
+  }
   return (
-    <button className="preset-container">
-            <img src={trial} alt="" />
-            <p>Original</p>
+    <button 
+    onClick={handleClick}
+    className={presetToApply == name ? "preset-container active" : "preset-container"}>
+            <img src={src} alt="" />
+            <p>{name}</p>
           </button>
   )
 }

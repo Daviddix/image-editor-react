@@ -37,9 +37,19 @@ function Editor() {
   const [showFilters, setShowFilters] = useState(false)
   const [rangeValue, setRangeValue] = useState(0)
 
-  const presets = ["Original", "Kodachrome", "Gotham", "Love", "Sepia", "Orange", "Grayscale", "B/W", "Snow", "Polaroid"]
+  const presets = ["Original", "Kodachrome", "Gotham", "Love", "Sepia", "Orange", "Grayscale", "B/W", "Snow", "Polaroid", "Dark Day"]
 
-  const filters = [{name: "Brightness", icon: BrightnessIcon}, {name: "Saturation", icon: SaturationIcon}]
+  const filters = [
+    { name: "Brightness", icon: BrightnessIcon },
+    { name: "Saturation", icon: SaturationIcon },
+    { name: "Contrast", icon: ContrastIcon },
+    { name: "Vibrance", icon: VibranceIcon },
+    { name: "Hue", icon: HueIcon },
+    { name: "Noise", icon: NoiseIcon },
+    { name: "Blur", icon: BlurIcon },
+    { name: "Pixellate", icon: PixellateIcon },
+    { name: "Blend", icon: BlendIcon },
+  ];
 
   const mappedPresets = presets.map((preset) => {
     return (
@@ -174,7 +184,7 @@ function Editor() {
             <>
               <small>{rangeValue}</small>
               <input 
-              min={0}
+              min={-100}
               max={100}
               value={rangeValue}
               onChange={(e)=> setRangeValue(parseInt(e.target.value))}

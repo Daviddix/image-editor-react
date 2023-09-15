@@ -46,9 +46,13 @@ export default function applyPreset(ctx, canvasRef, preset){
   else if(preset == "Kodachrome"){
     for(var i = 0; i<data.length; i+=4){
       
-      data[i] = Math.min(355, data[i] * 2.9)
-      data[i + 1] = Math.min(255, data[i + 1] * .6)
-      data[i + 2] = Math.min(255, data[i + 3] * 0.6)
+      var r = data[i]
+      var g = data[i + 1]
+      var b = data[i + 2]
+
+      data[i] = r * 7.2
+      data[i + 1] = g * .7
+      data[i + 2] = b * 0.2
     }
   }
   else if(preset == "Snow"){
@@ -78,6 +82,14 @@ export default function applyPreset(ctx, canvasRef, preset){
     for(var i = 0; i<data.length; i+=4){
       data[i] -= 30
       data[i + 1] -= 30
+      data[i + 2] -= 80
+    }
+  }
+  else if(preset == "Dark Day"){
+    for(var i = 0; i<data.length; i+=4){
+      
+      data[i] -= 90
+      data[i + 1] -= 110
       data[i + 2] -= 80
     }
   }

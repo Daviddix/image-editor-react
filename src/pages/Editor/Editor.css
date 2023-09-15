@@ -3,8 +3,6 @@ main.editor-main{
     max-height: 100vh;
 }
 
-
-
 .left-side .top-controls{
     width: 90vw;
     margin:auto;
@@ -69,7 +67,7 @@ main.editor-main{
     max-height:60vh;
     /* aspect-ratio: 16/9; */
     margin:3rem auto 5rem ;
-    border: 5px solid white;
+    min-height: 50vh;
 }
 
 .left-side .name-and-input{
@@ -103,6 +101,7 @@ main.editor-main{
     overflow-x: scroll;
     padding: 0 1.5rem;
     max-width: fit-content;
+    gap: 2rem;
 }
 
 .switcher{
@@ -143,6 +142,7 @@ main.editor-main{
     }
 
     .image-to-edit{
+        width:90%;
         max-width: 70rem;
     }
     
@@ -155,12 +155,11 @@ main.editor-main{
         justify-content: space-between;
         overflow: hidden;
         gap: 2rem;
-    }
+    }    
 
     .right-side .filters-container{
-        display: none;
+        row-gap: 4rem;
     }
-    
 
     .right-side .switcher{
         position: absolute;

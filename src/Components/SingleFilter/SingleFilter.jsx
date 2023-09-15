@@ -1,11 +1,15 @@
 import "./SingleFilter.css"
-import saturationIcon from "../../assets/icons/saturation.svg"
 
-function SingleFilter() {
+function SingleFilter({name, icon, filterToApply, setFilterToApply, src}) {
+  function handleClick(){
+    setFilterToApply(name) 
+  }
   return (
-    <button className="filter-container">
-    <img src={saturationIcon} alt="" />
-    <p>Saturation</p>
+    <button 
+    onClick={()=> handleClick()}
+    className="filter-container">
+    <img src={icon} alt="" />
+    <p>{name}</p>
   </button>
   )
 }

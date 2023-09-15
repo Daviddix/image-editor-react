@@ -1,0 +1,16 @@
+.filter-icon.active  *{
+    stroke: var(--filter-active);
+    transition: .2s linear ;
+    -webkit-transition: .2s linear ;
+    -moz-transition: .2s linear ;
+    -ms-transition: .2s linear ;
+    -o-transition: .2s linear ;
+}
+
+.filter-icon.active path:nth-child(1){
+    transition-delay: .3s;
+}
+
+.filter-icon.active path:nth-child(2){
+    transition-delay: .5s;
+}

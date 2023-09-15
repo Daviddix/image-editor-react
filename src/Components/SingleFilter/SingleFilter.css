@@ -1,12 +1,16 @@
 .filters-container .filter-container{
-    max-width: fit-content;
+    width: 7rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin: 0 2rem 0 0;
+    justify-content: flex-end;
+    margin: 0;
     background-color: transparent;
     border:none;
+}
+
+.filter-container img{
+    height:2.2rem;
 }
 
 .filter-container p{

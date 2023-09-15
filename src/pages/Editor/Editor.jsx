@@ -3,8 +3,16 @@ import saveIcon from "../../assets/icons/Group-3.svg"
 import undoIcon from "../../assets/icons/Group.svg"
 import downloadIcon from "../../assets/icons/Group-1.svg"
 import backArrow from "../../assets/icons/back-button.svg"
-import presetIcon from "../../assets/icons/preset.svg"
-import filterIcon from "../../assets/icons/filters.svg"
+
+import SaturationIcon from "../../assets/icons/saturation.svg"
+import BrightnessIcon from "../../assets/icons/brightness.svg"
+import BlendIcon from "../../assets/icons/blend-icon.svg"
+import ContrastIcon from "../../assets/icons/contrast.svg"
+import VibranceIcon from "../../assets/icons/vibrance.svg"
+import HueIcon from "../../assets/icons/hue.svg"
+import PixellateIcon from "../../assets/icons/pixellate.svg"
+import BlurIcon from "../../assets/icons/blur.svg"
+import NoiseIcon from "../../assets/icons/noise.svg"
 
 
 import "./Editor.css"
@@ -13,7 +21,9 @@ import SingleFilter from "../../Components/SingleFilter/SingleFilter"
 import EditNameModal from "../../Components/EditNameModal/EditNameModal"
 import { useNavigate } from "react-router-dom"
 import { useEffect, useRef, useState } from "react"
-import {fabric} from "fabric"
+import PresetIcon from "../../Components/PresetIcon/PresetIcon"
+import FilterIcon from "../../Components/FilterIcon/FilterIcon"
+import testImage from "../../../../My Pictures/r.jpg"
 
 function Editor() {
   const {name, src} = JSON.parse(localStorage.getItem("image-clicked"))
@@ -21,52 +31,71 @@ function Editor() {
   const [showMoreOptions, setShowMoreOptions] = useState(false)
   const canvasRef = useRef(null)
   const [presetToApply, setPresetToApply] = useState("")
-  const presets = ["Original", 'Grayscale', 'Invert', 'Sepia', 'Brownie','Vintage',
-  'Technicolor','Polaroid', 'Kodachrome','BlackWhite']
+  const [filterToApply, setFilterToApply] = useState("")
+  const [showPresets, setShowPresets] = useState(false)
+  const [showFilters, setShowFilters] = useState(false)
 
-  const mappedPresets = presets.map((preset)=>{
-    return <SinglePreset presetToApply={presetToApply} setPresetToApply={setPresetToApply} src={src} name={preset} />
+  const presets = ["B/W", "Kodachrome", "Orange"]
+
+  const filters = ["Brightness", "Saturation"]
+
+  const mappedPresets = presets.map((preset) => {
+    return (
+      <SinglePreset
+        presetToApply={presetToApply}
+        setPresetToApply={setPresetToApply}
+        src={src}
+        name={preset}
+      />
+    );
   })
 
-  useEffect(()=>{
-    happenOnInitial()
-  }, [presetToApply])
+  const mappedFilters = filters.map(({ name, icon }, src) => {
+    return <SingleFilter filterToApply={filterToApply} setFilterToApply={setFilterToApply} key={name} name={name} src={src} icon={icon} />
+  });
 
   function handleBackNavigation(){
     navigate("/")
   }
-
-  function happenOnInitial(){
-
-    var canvas = new fabric.Canvas('canvee');
-
-// Load an image onto the canvas
-fabric.Image.fromURL(src, function(img) {
-  // Set the position and dimensions of the image
-  canvas.setDimensions({ width: img.width, height: img.height });
-
-  // Add the image to the canvas
-  canvas.add(img);
-
-  // Apply grayscale filter to the image
-  img.filters.push(new fabric.Image.filters[presetToApply]());
-
-  // Apply the filters to the image
-  img.applyFilters();
-
-  // Render the canvas
-  canvas.renderAll();
-});
      
+
+  function clearAllChanges(){
+   
   }
+
+  function handleDownload(){
+    const dataURL = canvasRef.current.toDataURL()
+    const aElem = document.createElement("a")
+    aElem.href = dataURL
+    aElem.download = name
+    aElem.click()
+  }
+
+  function nameToDisplay(){
+    if (showPresets == true && showFilters == false) {
+      return presetToApply
+    }else if(showPresets == false && showFilters == true){
+      return filterToApply
+    }
+  }
+
+  useEffect(()=>{
+    document.title = "Image Editor | Editor"
+    
+
+  }, [presetToApply])
+
+  
+  
   return (
     <main className="editor-main">
       <div className="left-side">
         <div className="top-controls">
-          <div 
-          tabIndex={0}
-          onClick={()=> handleBackNavigation()}
-          className="back">
+          <div
+            tabIndex={0}
+            onClick={() => handleBackNavigation()}
+            className="back"
+          >
             <button>
               <img src={backArrow} alt="go back to your gallery" />
             </button>
@@ -77,66 +106,79 @@ fabric.Image.fromURL(src, function(img) {
               <img src={undoIcon} alt="remove your last filter" />
             </button>
 
-
             <button>
-              <img src={downloadIcon} alt="download your edited image" />
+              <img
+                onClick={() => handleDownload()}
+                src={downloadIcon}
+                alt="download your edited image"
+              />
             </button>
-
 
             <button>
               <img src={saveIcon} alt="save your changes" />
             </button>
 
-
-            <button
-            onClick={()=> setShowMoreOptions((prev) => !prev)}
-            >
+            <button onClick={() => setShowMoreOptions((prev) => !prev)}>
               <img src={moreIcon} alt="view more settings" />
             </button>
 
-            {showMoreOptions && <div className="image-options">
-              <button>Rename</button>
-              <button>Clear all changes</button>
-            </div>}
+            {showMoreOptions && (
+              <div className="image-options">
+                <button>Rename</button>
+                <button>Clear all changes</button>
+              </div>
+            )}
           </div>
         </div>
 
-
-        
-          <canvas id="canvee" ref={canvasRef} className="image-to-edit" ></canvas> 
+        <img src={testImage} alt="" className="image-to-edit" />
 
         <div className="name-and-input">
-          <p>B/W</p>
-          <small>7</small>
-          <input type="range" name="" id="" />
+          <p>{nameToDisplay()}</p>
+
+          {showFilters && (
+            <>
+              <small>7</small>
+              <input type="range" name="" id="" />
+            </>
+          )}
         </div>
       </div>
 
       <div className="right-side">
-        <div className="filters-container">
-          <SingleFilter />
-        </div>
-        <div className="presets-container">
+        {showPresets && (
+          <div className="presets-container">{mappedPresets}</div>
+        )}
 
-          {mappedPresets}
-        </div>
+        {showFilters && (
+          <div className="filters-container">{mappedFilters}</div>
+        )}
 
         <div className="switcher">
-          <button>
-            <img src={presetIcon} alt="image presets" />
+          <button
+          className = {showPresets? "preset-active" : ""}
+            onClick={() => {
+              setShowFilters(false)
+              setShowPresets(true)
+            }}
+          >
+            <PresetIcon showPresets={showPresets} />
           </button>
 
-          <button>
-            <img src={filterIcon} alt="image filters" />
+          <button
+            onClick={() => {
+              setShowPresets(false)
+              setShowFilters(true)
+            }}
+          >
+            <FilterIcon showFilters={showFilters} />
           </button>
         </div>
 
         <EditNameModal />
-
-        
       </div>
     </main>
-  )
-}
+  );
+          }
 
 export default Editor

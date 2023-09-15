@@ -22,7 +22,7 @@ function Homepage() {
     const [searchTerm, setSearchTerm] = useState("")
     const [isSearching, setIsSearching] = useState(false)
     const [searchedImages, setSearchedImages] = useState([])
-    const [showImageDetails, setShowImageDetails] = useState(false) 
+    const [showImageDetails, setShowImageDetails] = useState(false)
 
     useEffect(()=>{
     localStorage.setItem("edited-images", JSON.stringify(editedImages))

@@ -23,7 +23,8 @@ import { useNavigate } from "react-router-dom"
 import { useEffect, useRef, useState } from "react"
 import PresetIcon from "../../Components/PresetIcon/PresetIcon"
 import FilterIcon from "../../Components/FilterIcon/FilterIcon"
-import testImage from "../../../../My Pictures/r.jpg"
+import applyPreset from "../../libs/applyPreset"
+import applyFilter from "../../libs/applyFilter"
 
 function Editor() {
   const {name, src} = JSON.parse(localStorage.getItem("image-clicked"))
@@ -34,10 +35,11 @@ function Editor() {
   const [filterToApply, setFilterToApply] = useState("")
   const [showPresets, setShowPresets] = useState(false)
   const [showFilters, setShowFilters] = useState(false)
+  const [rangeValue, setRangeValue] = useState(0)
 
-  const presets = ["B/W", "Kodachrome", "Orange"]
+  const presets = ["Original", "Kodachrome", "Gotham", "Love", "Sepia", "Orange", "Grayscale", "B/W", "Snow", "Polaroid"]
 
-  const filters = ["Brightness", "Saturation"]
+  const filters = [{name: "Brightness", icon: BrightnessIcon}, {name: "Saturation", icon: SaturationIcon}]
 
   const mappedPresets = presets.map((preset) => {
     return (
@@ -51,14 +53,22 @@ function Editor() {
   })
 
   const mappedFilters = filters.map(({ name, icon }, src) => {
-    return <SingleFilter filterToApply={filterToApply} setFilterToApply={setFilterToApply} key={name} name={name} src={src} icon={icon} />
+    return (
+      <SingleFilter
+        filterToApply={filterToApply}
+        setFilterToApply={setFilterToApply}
+        key={name}
+        name={name}
+        src={src}
+        icon={icon}
+      />
+    );
   });
 
   function handleBackNavigation(){
     navigate("/")
   }
      
-
   function clearAllChanges(){
    
   }
@@ -79,11 +89,32 @@ function Editor() {
     }
   }
 
+  function happenOnInitial(){
+    const image = new Image();
+    image.src = src;
+    
+    
+    image.onload = function() {
+      canvasRef.current.width = image.width;
+      canvasRef.current.height = image.height;
+      const ctx = canvasRef.current.getContext('2d');
+      ctx.drawImage(image, 0, 0);
+
+      presetToApply !== "" && applyPreset(ctx, canvasRef, presetToApply)
+    }
+  }
+
   useEffect(()=>{
     document.title = "Image Editor | Editor"
-    
+    happenOnInitial()
 
   }, [presetToApply])
+
+  useEffect(() => {
+    console.log(filterToApply)
+   applyFilter(canvasRef, src, rangeValue, filterToApply)
+  }, [rangeValue])
+  
 
   
   
@@ -131,15 +162,23 @@ function Editor() {
           </div>
         </div>
 
-        <img src={testImage} alt="" className="image-to-edit" />
+        <canvas 
+        ref={canvasRef}
+        className="image-to-edit" >
+        </canvas>
 
         <div className="name-and-input">
           <p>{nameToDisplay()}</p>
 
           {showFilters && (
             <>
-              <small>7</small>
-              <input type="range" name="" id="" />
+              <small>{rangeValue}</small>
+              <input 
+              min={0}
+              max={100}
+              value={rangeValue}
+              onChange={(e)=> setRangeValue(parseInt(e.target.value))}
+              type="range" name="" id="" />
             </>
           )}
         </div>

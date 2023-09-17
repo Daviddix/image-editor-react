@@ -1,0 +1,57 @@
+
+.blend-options{
+    display:flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 90vw;
+    max-width: 40rem;
+    margin:0rem auto;
+    column-gap: 3rem;
+    
+}
+
+.blend-options h2{
+    font-size: 1.2rem;
+    margin: 0 0 .5rem 0;
+    color: var(--text-color);
+    font-weight: normal;
+}
+
+.blend-options > div{
+    width:45%;
+    max-width: 15rem;
+    background-color: var(--modal-bg);
+    border-radius: .8rem;
+    -webkit-border-radius: .8rem;
+    -moz-border-radius: .8rem;
+    -ms-border-radius: .8rem;
+    -o-border-radius: .8rem;
+    padding:.5rem 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.459);
+}
+
+.color-block input{
+    height: 2rem;
+    border:none;
+    border-radius: .2rem;
+    -webkit-border-radius: .2rem;
+    -moz-border-radius: .2rem;
+    -ms-border-radius: .2rem;
+    -o-border-radius: .2rem;
+    width: 100%;
+}
+
+.blend-mode select{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.4rem;
+    display: flex;
+    width: 100%;
+}
+
+select option{
+    background-color: var(--modal-bg);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}

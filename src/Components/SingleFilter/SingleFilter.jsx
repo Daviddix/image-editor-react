@@ -1,8 +1,9 @@
 import "./SingleFilter.css"
 
-function SingleFilter({name, icon, filterToApply, setFilterToApply, src}) {
+function SingleFilter({name, setUserHasSaved, icon, filterToApply, setFilterToApply, src}) {
   function handleClick(){
     setFilterToApply(name) 
+    setUserHasSaved(false)
   }
   return (
     <button 

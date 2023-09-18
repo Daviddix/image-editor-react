@@ -2,12 +2,14 @@ import { useEffect, useRef,useState } from "react";
 import "./SinglePreset.css"
 import applyPreset from "../../libs/applyPreset";
 
-function SinglePreset({name, src, setPresetToApply, presetToApply}) {
+function SinglePreset({name, src, setPresetToApply, presetToApply, setUserHasSaved}) {
 
-  const canvasRef = useRef(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const canvasRef = useRef(null) 
 
   function handleClick(){
     setPresetToApply(name)
+    setUserHasSaved(false)
   }
 
   function happenOnInitial(){
@@ -20,23 +22,39 @@ function SinglePreset({name, src, setPresetToApply, presetToApply}) {
       canvasRef.current.height = image.height;
       const ctx = canvasRef.current.getContext('2d');
       ctx.drawImage(image, 0, 0)
-
+      
       applyPreset(ctx, canvasRef, name)
     }
+    setTimeout(() => {
+      setIsLoading(false)    
+    }, 1000);
   }
 
   useEffect(()=>{
   happenOnInitial()
+  
+
   }, [])
 
   return (
     <button 
     onClick={handleClick}
-    className={presetToApply == name ? "preset-container active" : "preset-container"}>
+    className={presetToApply == name ?
+    isLoading ? 
+    "preset-container active loading" 
+    : "preset-container active" 
+    : 
+    isLoading ? 
+    "preset-container loading"
+      :
+      "preset-container"
+  }>
             <canvas
             ref={canvasRef}
             ></canvas>
-            <p>{name}</p>
+            <p
+            className="loading"
+            >{name}</p>
           </button>
   )
 }

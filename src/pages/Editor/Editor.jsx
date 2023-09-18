@@ -17,7 +17,6 @@ import NoiseIcon from "../../assets/icons/noise.svg";
 import PresetIcon from "../../Components/PresetIcon/PresetIcon";
 import FilterIcon from "../../Components/FilterIcon/FilterIcon";
 
-
 //components
 import SinglePreset from "../../Components/SinglePreset/SinglePreset";
 import SingleFilter from "../../Components/SingleFilter/SingleFilter";
@@ -26,15 +25,15 @@ import Blend from "../../Components/Blend/Blend";
 
 //misc
 import { useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./Editor.css";
+import { get,update,set } from "idb-keyval";
 
 //functions
 import applyPreset from "../../libs/applyPreset";
 import applyFilter from "../../libs/applyFilter";
 
 function Editor() {
-  const { name, src } = JSON.parse(localStorage.getItem("image-clicked"));
   const navigate = useNavigate();
   const [showMoreOptions, setShowMoreOptions] = useState(false);
   const canvasRef = useRef(null);
@@ -43,6 +42,8 @@ function Editor() {
   const [showPresets, setShowPresets] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
   const [rangeValue, setRangeValue] = useState(0);
+  const [imageObj, setImageObj] = useState({});
+  const [userHasSaved, setUserHasSaved] = useState(true)
 
   const presets = [
     "Original",
@@ -75,30 +76,57 @@ function Editor() {
       <SinglePreset
         presetToApply={presetToApply}
         setPresetToApply={setPresetToApply}
-        src={src}
+        src={imageObj.src}
         name={preset}
+        setUserHasSaved={setUserHasSaved}
       />
     );
   });
 
-  const mappedFilters = filters.map(({ name, icon }, src) => {
+  const mappedFilters = filters.map(({ name, icon }) => {
     return (
       <SingleFilter
         filterToApply={filterToApply}
         setFilterToApply={setFilterToApply}
         key={name}
         name={name}
-        src={src}
+        setUserHasSaved={setUserHasSaved}
+        src={imageObj.src}
         icon={icon}
       />
     );
   });
 
   function handleBackNavigation() {
-    navigate("/");
+    if (userHasSaved) {
+      async function updateEditedImages(){
+        try{
+          const editedImages = await get("edited-images")
+          const newEditedImages = editedImages.filter((image) => image.id !== imageObj.id)
+          newEditedImages.push(imageObj)
+          set("edited-images", newEditedImages)   
+          navigate("/");     
+
+        }
+        catch (err){
+          console.error(err)
+        }
+      }
+      updateEditedImages()
+    }else{
+      alert("Please Save before going back to your gallery")
+    }
   }
 
   function clearAllChanges() {}
+
+  function handleSave() {
+    const newSrc = canvasRef.current.toDataURL();
+    update('image-clicked', (val) => {
+      return {name : val.name, id : val.id, src: newSrc}
+    });
+    setUserHasSaved(true)
+  }
 
   function handleDownload() {
     const dataURL = canvasRef.current.toDataURL();
@@ -117,27 +145,33 @@ function Editor() {
   }
 
   function happenOnInitial() {
-    const image = new Image();
-    image.src = src;
+    console.log("starting");
+    get("image-clicked").then((imageObject) => {
+      setImageObj(imageObject);
+      const image = new Image();
+      image.src = imageObject.src;
+      image.onload = function () {
+        canvasRef.current.width = image.width;
+        canvasRef.current.height = image.height;
+        const ctx = canvasRef.current.getContext("2d");
+        ctx.drawImage(image, 0, 0);
 
-    image.onload = function () {
-      canvasRef.current.width = image.width;
-      canvasRef.current.height = image.height;
-      const ctx = canvasRef.current.getContext("2d");
-      ctx.drawImage(image, 0, 0);
+        presetToApply !== "" && applyPreset(ctx, canvasRef, presetToApply);
+      };
+    });
 
-      presetToApply !== "" && applyPreset(ctx, canvasRef, presetToApply);
-    };
+    console.log("finished");
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.title = "Image Editor | Editor";
     happenOnInitial();
   }, [presetToApply]);
 
   useEffect(() => {
     console.log(filterToApply);
-    applyFilter(canvasRef, src, rangeValue, filterToApply);
+    applyFilter(canvasRef, imageObj.src, rangeValue, filterToApply);
+    setUserHasSaved(false)
   }, [rangeValue]);
 
   return (
@@ -168,7 +202,10 @@ function Editor() {
             </button>
 
             <button>
-              <img src={saveIcon} alt="save your changes" />
+              <img 
+              onClick={(()=> handleSave())}
+              src={saveIcon} 
+              alt="save your changes" />
             </button>
 
             <button onClick={() => setShowMoreOptions((prev) => !prev)}>
@@ -205,7 +242,9 @@ function Editor() {
           )}
         </div>
 
-        {filterToApply == "Blend" && <Blend src={src} canvasRef={canvasRef} />}
+        {filterToApply == "Blend" && (
+          <Blend src={imageObj.src} canvasRef={canvasRef} />
+        )}
       </div>
 
       <div className="right-side">

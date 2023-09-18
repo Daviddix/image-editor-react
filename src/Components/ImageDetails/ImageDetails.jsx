@@ -5,11 +5,23 @@ import closeIcon from "../../assets/icons/x.svg"
 
 import "./ImageDetails.css"
 
-import {useRef} from "react"
+import {useEffect, useRef, useState} from "react"
 import { useNavigate } from "react-router-dom"
+import { get } from "idb-keyval"
 
-function ImageDetails({setShowImageDetails, setIsDownloading, editedImages, setEditedImages}) {
-  const {name, src, id} = JSON.parse(localStorage.getItem("image-clicked"))
+function ImageDetails({setShowImageDetails, setIsDownloading, editedImages, setEditedImages, setTypeOfOperation}) {
+  const [imageObj, setImageObj] = useState({})
+
+  useEffect(()=>{
+  get("image-clicked")
+  .then((imageObject)=>{
+    setImageObj(imageObject)
+  })
+  }, [])
+
+
+  
+
   const linkRef = useRef(null)
   const navigate = useNavigate()
 
@@ -26,13 +38,13 @@ function ImageDetails({setShowImageDetails, setIsDownloading, editedImages, setE
   }
 
   function handleDelete(imageId){
+    setTypeOfOperation("delete")
     const newEditedImages = editedImages.filter((image)=> image.id !== imageId)
     setEditedImages(newEditedImages)
     handleClose()
   }
 
   function handleEditButtonClicked(){
-    localStorage.setItem("image-clicked", JSON.stringify({name: name, src: src, id: id}))
     navigate("/editor")
 }
 
@@ -41,7 +53,7 @@ function ImageDetails({setShowImageDetails, setIsDownloading, editedImages, setE
 
     <div className="image-details-overlay-inner">
          <div className="image-details-overlay-heading">
-        <p>{name}</p>
+        <p>{imageObj.name}</p>
 
         <button>
         <img 
@@ -50,7 +62,7 @@ function ImageDetails({setShowImageDetails, setIsDownloading, editedImages, setE
         </button>
          </div>
 
-         <img src={src} alt="your image" />
+         <img src={imageObj.src} alt="your image" />
 
           <div className="details-button-container">
                 <button className="edit">
@@ -60,7 +72,7 @@ function ImageDetails({setShowImageDetails, setIsDownloading, editedImages, setE
                 </button>
 
                 <button 
-                onClick={()=> handleDelete(id)}
+                onClick={()=> handleDelete(imageObj.id)}
                 className="delete">
                     <img src={deleteIcon} alt="delete this image" />
                 </button>
@@ -74,8 +86,8 @@ function ImageDetails({setShowImageDetails, setIsDownloading, editedImages, setE
 
           <a 
             ref={linkRef}
-            href={src}
-            download={name} 
+            href={imageObj.src}
+            download={imageObj.name} 
             style={{display: "none"}}></a>
         </div>
    

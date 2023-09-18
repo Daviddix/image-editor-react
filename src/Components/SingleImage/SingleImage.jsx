@@ -5,7 +5,9 @@ import editIcon from "../../assets/icons/edit-2.svg"
 import { useRef } from "react"
 import { useNavigate } from "react-router-dom"
 
-function SingleImage({src, name, preset, filters,setIsDownloading, editedImages, setEditedImages, id, setShowImageDetails}) {
+import {set, get} from "idb-keyval"
+
+function SingleImage({src, name, preset, filters,setIsDownloading, editedImages, setEditedImages, id, setShowImageDetails, setTypeOfOperation}) {
     const linkRef = useRef(null)
     const navigate = useNavigate()
 
@@ -19,17 +21,18 @@ function SingleImage({src, name, preset, filters,setIsDownloading, editedImages,
     }
 
     function handleDelete(imageId){
+        setTypeOfOperation("delete")
         const newEditedImages = editedImages.filter((image)=> image.id !== imageId)
         setEditedImages(newEditedImages)
     }
 
     function handleImageClick(){
-        localStorage.setItem("image-clicked", JSON.stringify({name: name, src: src, id: id}))
+        set("image-clicked", {name: name, src: src, id: id})
         setShowImageDetails(true)
     }
 
     function handleEditButtonClicked(){
-        localStorage.setItem("image-clicked", JSON.stringify({name: name, src: src, id: id}))
+        set("image-clicked", {name: name, src: src, id: id})
         navigate("/editor")
     }
 

@@ -1,7 +1,8 @@
 import "./DeleteModal.css"
 
-function DeleteModal({setEditedImages, setShowDeleteAllModal}) {
+function DeleteModal({setEditedImages, setShowDeleteAllModal, setTypeOfOperation}) {
   function handleDelete(){
+    setTypeOfOperation("delete")
     setEditedImages([])
     setShowDeleteAllModal(false)
   }
